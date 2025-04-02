@@ -10,6 +10,7 @@ import { http } from 'viem'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter } from 'react-router-dom'
 import ErrorBoundary from './components/ErrorBoundary'
+import { Toaster } from 'react-hot-toast'
 
 // Update your QueryClient configuration
 const queryClient = new QueryClient({
@@ -53,12 +54,23 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <RainbowKitProvider
               chains={chains}
               theme={darkTheme({
-                accentColor: '#7c3aed', // purple-600
+                accentColor: '#7c3aed',
                 accentColorForeground: 'white',
                 borderRadius: 'large',
                 fontStack: 'system'
               })}
             >
+              <Toaster 
+                position="top-center"
+                toastOptions={{
+                  duration: 3000,
+                  style: {
+                    maxWidth: '500px',
+                    padding: '16px',
+                    textAlign: 'center',
+                  },
+                }} 
+              />
               <App />
             </RainbowKitProvider>
           </WagmiConfig>
